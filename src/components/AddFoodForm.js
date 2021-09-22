@@ -31,7 +31,7 @@ function AddFoodForm (props) {
 
 	return (
 		<>
-		<h2>hello world</h2>	
+		<h2>Add Food</h2>	
 		<form onSubmit = {handleSubmit}>		
 			<Input value={name} type="text" onChange={handleNameImput} />
 			<Input value={calories} type="text" onChange={handleCaloriesInput} />

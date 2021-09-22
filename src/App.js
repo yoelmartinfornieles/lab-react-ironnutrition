@@ -4,10 +4,18 @@ import {useState} from "react";
 import FoodBox from "./components/FoodBox"
 import AddFoodForm from "./components/AddFoodForm";
 import Search from "./components/Search"
+import { Button } from "antd";
+
 
 function App() {
   const [foodArray, setFoodArray] = useState (foods)
   const [foodToPrint, setFoodToPrint] = useState (foods)
+  const [expand, setExpand] = useState (false)
+
+  const handleExpandButton = () => {
+    console.log (expand)
+    setExpand(!expand)
+  }
 
   const addFood = (newFood) => {
     const updatedFoods = [...foodArray, newFood]
@@ -44,7 +52,12 @@ function App() {
   return (
     <div className="App">
       <Search foodToSearch = {foodArray} filterFoodList = {filterFoodList} />
-      <AddFoodForm addFood = {addFood} />
+
+      <Button onClick={handleExpandButton} >
+        {expand ? 'Hide Form' : 'Add New Food'}
+      </Button>
+      {expand && <AddFoodForm addFood = {addFood} />}
+
       <ul>
       {foodToPrint.map ( (food) => {
         //console.log (food)
