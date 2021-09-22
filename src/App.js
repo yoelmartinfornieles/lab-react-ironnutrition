@@ -32,6 +32,15 @@ function App() {
     setFoodToPrint(filteredFoods);
   };
 
+  const deleteFood = (foodToDelete) => {
+    console.log('foodToDelete: ', foodToDelete)
+    let filteredFoods = foodArray.filter( (food) => {
+      return (food.name !== foodToDelete.name)
+    })
+    setFoodArray (filteredFoods);
+    setFoodToPrint (filteredFoods);
+  }
+
   return (
     <div className="App">
       <Search foodToSearch = {foodArray} filterFoodList = {filterFoodList} />
@@ -40,7 +49,7 @@ function App() {
       {foodToPrint.map ( (food) => {
         //console.log (food)
         return (
-          <FoodBox food={food} />
+          <FoodBox food={food} deleteFood={deleteFood} />
         )}
       )}
       </ul>
