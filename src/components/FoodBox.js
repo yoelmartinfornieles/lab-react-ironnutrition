@@ -1,9 +1,9 @@
 import { Card, Col, Divider, Button } from "antd";
 
 function FoodBox (props) {
-	console.log ("props: ", props)
+	//console.log ("props: ", props)
 	let food = props.food;
-	console.log ("food: ",food);
+	//console.log ("food: ",food);
 	return (
 		<>
 		<Col>
