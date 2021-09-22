@@ -20,6 +20,7 @@ function App() {
   const addFood = (newFood) => {
     const updatedFoods = [...foodArray, newFood]
     setFoodArray (updatedFoods)
+    setFoodToPrint (updatedFoods)
   }
 
   const filterFoodList = (foodToSearch) => {
@@ -45,6 +46,7 @@ function App() {
     let filteredFoods = foodArray.filter( (food) => {
       return (food.name !== foodToDelete.name)
     })
+    
     setFoodArray (filteredFoods);
     setFoodToPrint (filteredFoods);
   }
@@ -59,12 +61,20 @@ function App() {
       {expand && <AddFoodForm addFood = {addFood} />}
 
       <ul>
-      {foodToPrint.map ( (food) => {
-        //console.log (food)
-        return (
-          <FoodBox food={food} deleteFood={deleteFood} />
-        )}
-      )}
+
+      {foodToPrint.length !== 0 ? (
+          foodToPrint.map ( (food) => {
+          //console.log (food)
+          return (
+            <FoodBox food={food} deleteFood={deleteFood} />
+            )
+          })
+        ) 
+        : 
+        (<div className="parentNoFoodDiv">
+			    <h3>Ooops! There is no more content to show.</h3>
+		    </div>)
+      }
       </ul>
     </div>
   )
