@@ -4,7 +4,7 @@ import {useState} from "react";
 import FoodBox from "./components/FoodBox"
 import AddFoodForm from "./components/AddFoodForm";
 import Search from "./components/Search"
-import { Button } from "antd";
+import { Row, Divider, Button } from "antd";
 
 
 function App() {
@@ -53,14 +53,17 @@ function App() {
 
   return (
     <div className="App">
-      <Search foodToSearch = {foodArray} filterFoodList = {filterFoodList} />
 
       <Button onClick={handleExpandButton} >
         {expand ? 'Hide Form' : 'Add New Food'}
       </Button>
       {expand && <AddFoodForm addFood = {addFood} />}
 
-      <ul>
+      <Search foodToSearch = {foodArray} filterFoodList = {filterFoodList} />
+
+      <Divider>Food List</Divider>
+
+      <Row style={{ width: "100%", justifyContent: "center" }}>
 
       {foodToPrint.length !== 0 ? (
           foodToPrint.map ( (food) => {
@@ -71,11 +74,13 @@ function App() {
           })
         ) 
         : 
-        (<div className="parentNoFoodDiv">
+        (<div className="noFood">
 			    <h3>Ooops! There is no more content to show.</h3>
+          <p className="empty">ø</p>
 		    </div>)
       }
-      </ul>
+      
+      </Row>
     </div>
   )
 }

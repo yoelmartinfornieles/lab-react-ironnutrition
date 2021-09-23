@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  text-align: left;
+  margin: 5%;
 }
 
 .App-logo {
@@ -35,4 +36,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.noFood {
+  
+}
+
+.empty { 
+  font-variant: slashed-zero;
+  font-size: 18em;
+  display: flex;
+  justify-content: center;
 }
